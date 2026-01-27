@@ -122,7 +122,7 @@ owner:
   linkedin: hanlin-cai-07b53b23b（只需要ID即可）
 
 links:
-  - title: About Me（可依照个人需求修改，下同）
+  - title: 首页
     url: /
   - title: Publications
     url: /publications/
