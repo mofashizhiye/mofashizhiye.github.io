@@ -390,74 +390,133 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
 @media print{*{background:transparent !important;color:black !important;box-shadow:none !important;text-shadow:none !important;filter:none !important;-ms-filter:none !important;position:static !important;} @page {margin:0.5cm;}h2,h3{orphans:3;widows:3;page-break-after:avoid;} p{orphans:3;widows:3;} pre,blockquote{border:1px solid #333;page-break-inside:avoid;padding:1em;} abbr[title]:after{content:" (" attr(title) ")";} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} img{max-width:100% !important;page-break-inside:avoid;} thead{display:table-header-group;} tr{page-break-inside:avoid;}}@media only screen and (min-width:30em){.image-grid li{width:33.333333%;}}@media only screen and (min-width:37.5em){html{font-size:95%;} .site-name{display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .top-navigation{display:inline;float:left;width:75%;margin-left:0%;margin-right:0%;} .image-wrap .headline-wrap,.image-wrap:after{left:25%;} .image-wrap .headline-wrap{margin-left:0;} #main article{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} #index{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} .footer-wrap footer{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;} .article-author-top{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .article-author-bottom{display:none;} .toc{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;position:fixed;top:120px;right:0;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);} .image-grid li{width:25%;} .related-articles{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;}}@media only screen and (min-width:48em){html{font-size:100%;} .image-grid li{width:20%;}}@media only screen and (min-width:62em){html{font-size:112.5%;} .image-grid li{width:16.666666666%;}}@media only screen and (min-width:86.375em){.site-name{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;} .top-navigation{display:inline;float:left;width:66.66666666666667%;} .image-wrap:after{left:33.333333333%;} .image-wrap .headline-wrap{margin-left:8.333333333333334%;} #main article{display:inline;float:left;width:37.5%;} #index{display:inline;float:left;width:37.5%;} .related-articles{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .footer-wrap footer{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .article-author-top{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;}}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){}
 
 /* ============================================================
-   ULTIMATE MINIMALIST OVERRIDE (GitHub Style v4)
+   ULTIMATE MINIMALIST & TWO-COLUMN LAYOUT (v5)
    ============================================================ */
 
-/* 1. 标题字体优化：消除瘦长感，增加宽度和厚度 */
-h1, h2, h3, h4, h5, h6, 
-#main article h1, 
-.headline-wrap h1 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
-    font-weight: 800 !important; /* 加粗 */
-    letter-spacing: 0px !important; /* 消除窄间距 */
-    color: #1b2128 !important; /* 颜色略深于正文，但非纯黑 */
-    text-rendering: optimizeLegibility;
-}
-
-/* 2. 正文容器：去掉左右竖线，仅保留横线，并加宽内容区 */
-#main article {
-    border-left: none !important;  /* 去掉左竖线 */
-    border-right: none !important; /* 去掉右竖线 */
-    border-top: 1px solid #d0d7de !important; /* 保留顶线 */
-    border-bottom: 1px solid #d0d7de !important; /* 保留底线 */
-    border-radius: 0 !important; /* 既然没竖线了，圆角也去掉 */
-    
-    padding: 2rem 0 !important; /* 侧边不再需要内边距 */
-    background: transparent !important;
-    box-shadow: none !important;
-
-    /* 加宽内容区 */
-    width: 100% !important; 
-    max-width: 100% !important; 
-}
-
-/* 强制调整主容器布局，让内容占有更多空间 */
+/* 1. 强制主容器为两栏 Flex 布局 */
 #main {
-    width: 95% !important; /* 占用屏幕 95% 宽度 */
+    display: flex !important;
+    flex-direction: row !important; /* 强制水平排列 */
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important; /* 宽屏下不换行 */
+    
+    /* 巩固加宽主容器，留出两栏空间 */
+    width: 95% !important;
     max-width: 1400px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-top: 40px !important; /* 内容下移，给导航栏留空间 */
 }
 
-/* 3. 侧边栏（头像/名称）位置：向左平移 */
-.article-author-top {
-    margin-left: 0% !important; /* 减小原有的左边距偏移 */
-    padding-left: 0 !important;
+/* 2. 定义左侧边栏（头像与链接）样式及【竖线】 */
+.article-author-top, .sidebar {
+    /* 设定固定宽度 */
+    flex: 0 0 260px !important; 
+    width: 260px !important;
+    
+    /* 位置调整 */
+    margin-left: 0% !important;
+    margin-top: 0 !important; /* 既然并排了，不再需要向下推 */
+    padding-top: 2rem !important; /* 与正文顶部对齐 */
+    padding-right: 40px !important; /* 增加与竖线的距离，防止拥挤 */
     text-align: left !important;
+
+    /* 添加关键竖线 */
+    border-right: 1px solid #d0d7de !important;
+    box-sizing: border-box !important;
 }
 
-/* 4. 导航栏与全局链接巩固 */
-.navigation-wrapper {
-    min-height: 70px !important;
-    border-bottom: 1px solid #d0d7de !important;
-    padding-bottom: 10px !important;
-    margin-bottom: 30px !important;
-}
-
-a, a:visited, #main p a, #main li a {
-    color: #24292f !important; /* 链接设为黑色 */
+/* 确保侧边栏内的链接也是黑色的，无多余装饰 */
+.article-author-top a, .sidebar a {
+    color: #24292f !important;
     text-decoration: none !important;
-    border-bottom: none !important;
+    font-weight: 500 !important;
 }
-
-a:hover {
+.article-author-top a:hover, .sidebar a:hover {
     color: #0969da !important;
     text-decoration: underline !important;
 }
 
-/* 5. 页脚极简色 */
+/* 3. 定义右侧正文区域布局 */
+#main article, .well, #index {
+    flex: 1 !important; /* 占用剩余所有空间 */
+    
+    /* 调整边距以避开竖线 */
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding-left: 60px !important; /* 增加竖线与文字的距离 */
+    padding-top: 2rem !important;
+
+    /* 巩固之前的样式：去掉圆角，保留极简上下横线 */
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-top: 1px solid #d0d7de !important;
+    border-bottom: 1px solid #d0d7de !important;
+    border-left: none !important; /* 确保自身不带竖线 */
+    border-right: none !important; /* 确保自身不带竖线 */
+    
+    /* 容器加宽 */
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* 4. 巩固字体：消除瘦长感 */
+h1, h2, h3, h4, h5, h6, #main article h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0px !important;
+    color: #1b2128 !important;
+    margin-top: 0 !important;
+}
+
+/* 5. 巩固全局链接颜色（黑字） */
+a {
+    color: #0969da !important;
+}
+p > a, li > a {
+    color: #24292f !important;
+    text-decoration: none !important;
+}
+p > a:hover, li > a:hover {
+    color: #0969da !important;
+    text-decoration: underline !important;
+}
+
+/* 6. 导航栏与页脚极简色（白底灰线） */
+.navigation-wrapper {
+    min-height: 70px !important;
+    border-bottom: 1px solid #d0d7de !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 0 !important; /* 底部间距由下方的 #main margin-top 控制 */
+    background: #ffffff !important;
+}
+
 .footer-wrap {
     background-color: #ffffff !important;
     border-top: 1px solid #d0d7de !important;
-    color: #57606a !important;
+}
+
+/* 7. 响应式处理：在小屏（手机）上自动堆叠回一栏，防止竖线切断内容 */
+@media (max-width: 768px) {
+    #main {
+        flex-direction: column !important; /* 手机端堆叠 */
+        width: 100% !important;
+    }
+
+    .article-author-top, .sidebar {
+        width: 100% !important;
+        flex: none !important;
+        border-right: none !important; /* 去掉竖线 */
+        border-bottom: 1px solid #d0d7de !important; /* 改为底线 */
+        padding-right: 0 !important;
+        padding-bottom: 2rem !important;
+        text-align: center !important; /* 头像居中 */
+    }
+
+    #main article {
+        padding-left: 0 !important;
+        margin-top: 2rem !important;
+    }
 }
