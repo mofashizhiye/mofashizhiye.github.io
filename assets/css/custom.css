@@ -1,121 +1,151 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - FORCED LEFT FIX (v14)
+   ULTIMATE MINIMALIST & COMPACT TWO-COLUMN LAYOUT (v6)
    ============================================================ */
 
-/* 1. 彻底打破主题容器限制，铺满屏幕 */
-.wrapper, .inner, .initial-content {
-    max-width: none !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* 2. 背景伪竖线实现：固定在左侧 250px 的位置 */
-body {
-    position: relative !important;
-    background-color: #ffffff !important;
-    /* 核心修改：在线条位置不动 (250px)，但在最左边留出 20px 间距，让整体右移 */
-    background-image: linear-gradient(#d0d7de, #d0d7de) !important;
-    background-size: 1px 100% !important;
-    background-repeat: no-repeat !important;
-    /* 核心修改：线条位置设为 250px + 20px margin = 270px */
-    background-position: 270px 0 !important; 
-    
-    /* 核心修改：强制移除全局滚动条 */
-    overflow-x: hidden !important;
-}
-
-/* 确保所有全局字体彻底圆润且不加粗 */
-html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
+/* 1. 标题字体优化：消除瘦长感，且【彻底移除加粗】 */
+h1, h2, h3, h4, h5, h6, 
+#main article h1, 
+.headline-wrap h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-weight: 400 !important; /* 彻底移除加粗，使用标准重量 */
+    letter-spacing: 0px !important;
+    color: #1b2128 !important; /* 颜色略深于正文 */
+    text-rendering: optimizeLegibility;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* 特别针对首页标题 */
+h1.entry-title {
     font-weight: 400 !important;
-    color: #1b2128 !important;
 }
 
-/* 3. 导航栏：GitHub 灰 + 字体放大且圆润 (保持原样不动) */
-.navigation-wrapper {
-    min-height: 60px !important;
-    background-color: #f6f8fa !important;
-    border-bottom: 1px solid #d0d7de !important;
-    padding: 0.8rem 0 !important;
-    margin-bottom: 0 !important;
-}
-.site-name { display: none !important; }
-.top-navigation { margin-left: 20px !important; }
-.top-navigation li a {
-    padding: 10px 16px !important;
-    font-size: 16px !important;
-    color: #24292f !important;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-}
-.top-navigation-current, .top-navigation li.active a {
-    border-bottom: 2px solid #fd8c73 !important;
-    font-weight: 600 !important;
-}
-
-/* 4. 两栏布局：【精准定位头像在网页边缘和竖线之间】 */
+/* 2. 强制主容器整体向左对齐，并加宽 */
 #main {
     display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important; /* 强制竖线拉伸到底 */
-    width: 100% !important;
-    max-width: none !important;
-    margin: 60px 0 0 20px !important; /* 核心修改：margin-left: 20px让整体右移 */
-    padding: 0 !important;
+    flex-direction: row !important; /* 水平排列 */
+    justify-content: flex-start !important; /* 靠左对齐 */
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important;
+    
+    /* 核心修改：大幅减小左边距，让整体布局靠左 */
+    width: 98% !important; /* 占用屏幕 98% 宽度 */
+    max-width: 1600px !important; /* 增加最大宽度限制，给正文更多空间 */
+    margin-left: 1% !important; /* 仅留 1% 的左边距 */
+    margin-right: auto !important;
+    margin-top: 30px !important; /* 内容下移 */
 }
 
-/* 侧边栏：头像和链接就在这 250px 宽度的空间里 */
+/* 3. 定义【紧凑型】左侧边栏（头像与链接）及【左移的竖线】 */
 .article-author-top, .sidebar {
-    /* 固定侧边栏区域宽度，配合背景线位置 */
-    flex: 0 0 250px !important; 
-    width: 250px !important;
+    /* 核心修改：减小侧边栏固定宽度，从 260px 缩至 220px */
+    flex: 0 0 220px !important; 
+    width: 220px !important;
     
-    /* 核心修改：内边距精准微调 */
-    /* padding-left 设为 30px，从左边缘向右缩进 */
-    /* padding-right 设为 20px，离右侧竖线留出间距 */
-    padding: 1rem 20px 0 30px !important; 
-    
-    /* 彻底移除侧边栏自带的竖线 */
-    border-right: none !important;
+    /* 位置与内边距调整 */
+    margin-left: 0% !important;
+    margin-top: 0 !important;
+    padding-top: 2rem !important;
+    /* 核心修改：减小右内边距，让竖线离文字更近，从而使竖线整体左移 */
+    padding-right: 25px !important; 
     text-align: left !important;
+
+    /* 关键竖线 */
+    border-right: 1px solid #d0d7de !important;
     box-sizing: border-box !important;
 }
 
-/* 确保头像内的元素不带有额外的左边距 */
-#author-bio, .author-avatar {
-    margin-left: 0 !important;
+/* 侧边栏内的链接巩固 */
+.article-author-top a, .sidebar a {
+    color: #24292f !important;
+    text-decoration: none !important;
+    font-weight: 500 !important; /* 链接可以稍微明显一点 */
+}
+.article-author-top a:hover, .sidebar a:hover {
+    color: #0969da !important;
+    text-decoration: underline !important;
 }
 
-/* 正文区域：占用剩余所有空间 */
+/* 4. 定义右侧【更宽敞的】正文区域布局 */
 #main article, .well, #index {
-    flex: 1 !important;
-    /* padding-left 设为 45px，确保文字离背景竖线有足够距离 */
-    padding: 1rem 5% 4rem 45px !important; 
+    flex: 1 !important; /* 占用剩余所有空间 */
+    
+    /* 核心修改：减小左内边距，充分利用竖线左移腾出的空间 */
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding-left: 40px !important; 
+    padding-top: 2rem !important;
+    padding-right: 2rem !important; /* 增加右边距，防止文字贴边 */
 
-    /* 极简上下横线 Consolidation */
+    /* 极简上下横线巩固 */
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     border-top: 1px solid #d0d7de !important;
     border-bottom: 1px solid #d0d7de !important;
     border-left: none !important;
     border-right: none !important;
-    border-radius: 0 !important;
+    
+    /* 容器加宽 */
+    width: 100% !important;
+    max-width: none !important;
 }
 
-/* 5. 黑色尾部：极简潜水艇文字 (保持原样不动) */
+/* 5. 巩固全局字体与链接颜色 */
+html, body {
+    background-color: #ffffff !important;
+    color: #24292f !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    line-height: 1.6 !important;
+}
+
+a, p > a, li > a {
+    color: #24292f !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+a:hover, p > a:hover, li > a:hover {
+    color: #0969da !important;
+    text-decoration: underline !important;
+}
+
+/* 6. 导航栏与页脚极简色 */
+.navigation-wrapper {
+    min-height: 70px !important;
+    border-bottom: 1px solid #d0d7de !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 0 !important;
+    background: #ffffff !important;
+}
+
 .footer-wrap {
-    background-color: #000000 !important;
-    padding: 4rem 0 !important;
-    margin-top: 0 !important;
+    background-color: #ffffff !important;
+    border-top: 1px solid #d0d7de !important;
+    padding-top: 2rem !important;
 }
-.footer-wrap footer {
-    color: #57606a !important;
-    /* 对齐正文（270px 线条位置 + 45px 正文间隔） */
-    margin-left: 315px !important; 
-    font-size: 14px !important;
-}
-.footer-wrap a, .footer-wrap .social-icons { display: none !important; }
 
-/* 6. 辅助样式巩固 */
-a { color: #0969da !important; }
-p > a, li > a { color: #24292f !important; text-decoration: none !important; }
-a:hover { text-decoration: underline !important; }
+/* 7. 响应式处理（手机端堆叠） */
+@media (max-width: 768px) {
+    #main {
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 1rem !important;
+    }
+
+    .article-author-top, .sidebar {
+        width: 100% !important;
+        flex: none !important;
+        border-right: none !important; /* 移除竖线 */
+        border-bottom: 1px solid #d0d7de !important; /* 改为底线 */
+        padding-right: 0 !important;
+        padding-bottom: 2rem !important;
+        text-align: center !important;
+    }
+
+    #main article {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-top: 2rem !important;
+    }
+}
