@@ -457,64 +457,51 @@ hr {
     border-top: 1px solid #d0d7de !important;
     border-bottom: none !important;
 }
-
 /* ============================================================
-   FORCED MINIMALIST OVERRIDE (GitHub Style)
+   ULTIMATE NAV CLEANUP & ALIGNMENT
    ============================================================ */
 
-/* 1. 彻底解决字体问题：强制使用系统无衬线字体，消除圆滑华丽感 */
-html, body, div, p, a, li, h1, h2, h3, h4, h5, h6, span, section, article {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
-}
-
-/* 2. 彻底解决超链接蓝色：强制所有状态为黑色，取消所有下划线装饰 */
-a, 
-a:visited, 
-#main a, 
-#main p a, 
-#main li a,
-.archive__item-title a {
-    color: #24292f !important;
+/* 1. 彻底关掉所有导航栏相关的旧线条（包括伪元素和边框） */
+.navigation-wrapper, 
+.top-navigation, 
+.top-navigation ul, 
+.top-navigation li, 
+.top-navigation a,
+.top-navigation-current {
+    border: none !important;
     text-decoration: none !important;
-    border-bottom: none !important;
     box-shadow: none !important;
 }
 
-a:hover {
-    color: #0969da !important; /* 只有悬停时才变蓝 */
-    text-decoration: underline !important;
+.top-navigation li a::after, 
+.top-navigation li a::before {
+    content: none !important;
+    display: none !important;
 }
 
-/* 3. 修正导航栏横线：移除顶部错位的横线，统一放在下方 */
+/* 2. 重新定义底部全局横线：确保它在所有文字下方 */
 .navigation-wrapper {
-    border-bottom: 1px solid #d0d7de !important; /* 底部基准线 */
-    padding: 15px 0 !important;
+    border-bottom: 1px solid #d0d7de !important; /* 全局贯穿线 */
+    padding: 25px 0 10px 0 !important; /* 增加底部间距，防止线条切到文字 */
+    margin-bottom: 30px !important;
+    background-color: #fff !important;
 }
 
-/* 移除原主题可能在顶部的装饰线 */
-.top-navigation {
-    border-top: none !important;
+/* 3. 修正“当前页面”的激活线：紧贴文字下方，不再穿过文字 */
+.top-navigation .top-navigation-current a,
+.top-navigation li.active a,
+.top-navigation-current {
+    border-bottom: 2px solid #24292f !important;
+    padding-bottom: 8px !important; /* 线条与文字的距离 */
+    display: inline-block !important;
 }
 
-/* 修正“当前页面”的横线位置：放在文字下方 */
-.top-navigation-current,
-.top-navigation .current,
-.top-navigation li.active a {
-    text-decoration: none !important;
-    border-top: none !important; /* 删掉出现在文字上方的线 */
-    border-bottom: 2px solid #24292f !important; /* 线条改在下方 */
-    padding-bottom: 4px;
+/* 4. 字体与链接颜色再次巩固 (确保无衬线且纯黑) */
+html, body, .navigation-wrapper * {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
 }
 
-/* 4. 移除正文容器不必要的边框和阴影，增加线条感 */
-#main article, .well, #index {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-hr {
-    height: 1px !important;
-    background-color: #d0d7de !important;
-    border: none !important;
-    margin: 2rem 0 !important;
+.top-navigation a {
+    color: #24292f !important;
+    font-weight: 500 !important;
 }
