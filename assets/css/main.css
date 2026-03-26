@@ -390,29 +390,47 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
 @media print{*{background:transparent !important;color:black !important;box-shadow:none !important;text-shadow:none !important;filter:none !important;-ms-filter:none !important;position:static !important;} @page {margin:0.5cm;}h2,h3{orphans:3;widows:3;page-break-after:avoid;} p{orphans:3;widows:3;} pre,blockquote{border:1px solid #333;page-break-inside:avoid;padding:1em;} abbr[title]:after{content:" (" attr(title) ")";} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} img{max-width:100% !important;page-break-inside:avoid;} thead{display:table-header-group;} tr{page-break-inside:avoid;}}@media only screen and (min-width:30em){.image-grid li{width:33.333333%;}}@media only screen and (min-width:37.5em){html{font-size:95%;} .site-name{display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .top-navigation{display:inline;float:left;width:75%;margin-left:0%;margin-right:0%;} .image-wrap .headline-wrap,.image-wrap:after{left:25%;} .image-wrap .headline-wrap{margin-left:0;} #main article{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} #index{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} .footer-wrap footer{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;} .article-author-top{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .article-author-bottom{display:none;} .toc{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;position:fixed;top:120px;right:0;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);} .image-grid li{width:25%;} .related-articles{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;}}@media only screen and (min-width:48em){html{font-size:100%;} .image-grid li{width:20%;}}@media only screen and (min-width:62em){html{font-size:112.5%;} .image-grid li{width:16.666666666%;}}@media only screen and (min-width:86.375em){.site-name{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;} .top-navigation{display:inline;float:left;width:66.66666666666667%;} .image-wrap:after{left:33.333333333%;} .image-wrap .headline-wrap{margin-left:8.333333333333334%;} #main article{display:inline;float:left;width:37.5%;} #index{display:inline;float:left;width:37.5%;} .related-articles{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .footer-wrap footer{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .article-author-top{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;}}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){}
 
 /* ============================================================
-   ULTIMATE MINIMALIST - NAV FIX & LEFT ALIGN (v11)
+   ULTIMATE MINIMALIST - INFINITE VERTICAL LINE (v12)
    ============================================================ */
 
-/* 1. 基础容器重置：确保内容能贴到屏幕最左侧 */
-.wrapper, .inner, .initial-content {
+/* 1. 彻底打破主题容器限制 */
+.wrapper, .inner, .initial-content, #main, .footer-wrap {
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* 2. 导航栏【横向回归】：强制水平排列并放大 */
+/* 2. 背景伪竖线实现：从导航栏底部贯穿到底部黑色 */
+body {
+    position: relative !important;
+    background-color: #ffffff !important;
+    /* 核心修改：在 body 背景上画线，实现“无限拉伸” */
+    /* 线条位于左侧 235px (20px body margin + 215px right padding) */
+    background-image: linear-gradient(#d0d7de, #d0d7de) !important;
+    background-size: 1px 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: 235px 0 !important; /* 线条位置不动，位于头像右侧 */
+}
+
+/* 确保所有全局字体彻底圆润且不加粗 */
+html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-weight: 400 !important;
+    color: #1b2128 !important;
+}
+
+/* 3. 导航栏【横向巩固】：放大且圆润 */
 .navigation-wrapper {
-    width: 100% !important;
+    min-height: 60px !important;
     background-color: #f6f8fa !important;
     border-bottom: 1px solid #d0d7de !important;
-    min-height: 60px !important;
-    display: block !important; /* 导航包装器本身作为块 */
+    padding: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .site-name { display: none !important; }
 
-/* 核心修复：强制导航列表横向显示 */
 .top-navigation {
     margin-left: 20px !important;
 }
@@ -426,18 +444,11 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
     padding: 0 !important;
 }
 
-.top-navigation li {
-    display: inline-block !important; /* 补充保险 */
-    margin: 0 !important;
-}
-
 .top-navigation li a {
     display: block !important;
     padding: 18px 20px !important;
     font-size: 16px !important;
     color: #24292f !important;
-    text-transform: uppercase;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
     border-bottom: 2px solid transparent;
     transition: all 0.2s;
 }
@@ -449,35 +460,36 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
     font-weight: 600 !important;
 }
 
-/* 3. 主布局：头像左移 + 竖线拉伸到底 */
+/* 4. 两栏布局：【整体右移修正】 */
 #main {
     display: flex !important;
     flex-direction: row !important;
-    align-items: stretch !important; /* 确保竖线随正文无限拉伸 */
+    align-items: stretch !important;
     width: 100% !important;
-    max-width: none !important;
-    margin: 60px 0 0 0 !important; /* 增加与导航栏的距离 */
+    margin: 60px 0 0 20px !important; /* 核心修改：margin-left: 20px让整体右移 */
     padding: 0 !important;
 }
 
-/* 头像与链接侧边栏 */
+/* 头像侧边栏：放在竖线左侧空间内 */
 .article-author-top, .sidebar {
-    flex: 0 0 200px !important; /* 侧边栏宽度 */
-    width: 200px !important;
+    flex: 0 0 215px !important; /* 固定宽度，配合背景线位置 */
+    width: 215px !important;
     
-    margin-left: 20px !important; /* 离屏幕最左侧的距离 */
-    padding: 1rem 25px 0 0 !important;
+    /* 核心修改：内边距微调，让内容位于左边缘和竖线之间 */
+    padding: 1rem 30px 0 0 !important;
     
-    border-right: 1px solid #d0d7de !important; /* 竖线 */
-    box-sizing: border-box !important;
+    /* 核心修改：移除原有的边框竖线，改用背景线实现贯穿 */
+    border-right: none !important;
     text-align: left !important;
 }
 
-/* 正文区域 */
+/* 正文区域：占据剩余所有空间 */
 #main article, .well, #index {
     flex: 1 !important;
-    padding: 1rem 5% 2rem 50px !important; /* 上 右 下 左 */
+    /* 核心修改：左内边距 35px，确保文字离背景竖线有距离 */
+    padding: 1rem 5% 4rem 35px !important; 
 
+    /* 极简上下横线 Consolidation */
     border-top: 1px solid #d0d7de !important;
     border-bottom: 1px solid #d0d7de !important;
     border-left: none !important;
@@ -485,14 +497,27 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
     border-radius: 0 !important;
 }
 
-/* 4. 全局字体彻底不加粗 */
-h1, h2, h3, h4, h5, h6, #main article h1 {
-    font-weight: 400 !important;
-    color: #1b2128 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+/* 5. 页脚（黑色尾部）：极简优化 */
+.footer-wrap {
+    background-color: #000000 !important;
+    color: #57606a !important; /* 灰字 */
+    padding: 3rem 0 2rem 0 !important;
 }
 
-/* 5. 链接颜色策略 */
+/* 确保页脚文字也对齐（与正文或竖线） */
+.footer-wrap footer {
+    margin-left: 270px !important; /* 放在竖线右侧对齐正文 */
+    font-size: 14px !important;
+}
+
+/* 彻底隐藏页脚内可能存在的旧链接和社交图标 */
+.footer-wrap .social-icons,
+.footer-wrap .cc-license,
+.footer-wrap a {
+    display: none !important;
+}
+
+/* 6. 辅助样式巩固 */
 a { color: #0969da !important; }
 p > a, li > a { color: #24292f !important; text-decoration: none !important; }
 a:hover { text-decoration: underline !important; }
