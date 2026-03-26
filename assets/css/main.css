@@ -390,85 +390,70 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
 @media print{*{background:transparent !important;color:black !important;box-shadow:none !important;text-shadow:none !important;filter:none !important;-ms-filter:none !important;position:static !important;} @page {margin:0.5cm;}h2,h3{orphans:3;widows:3;page-break-after:avoid;} p{orphans:3;widows:3;} pre,blockquote{border:1px solid #333;page-break-inside:avoid;padding:1em;} abbr[title]:after{content:" (" attr(title) ")";} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} img{max-width:100% !important;page-break-inside:avoid;} thead{display:table-header-group;} tr{page-break-inside:avoid;}}@media only screen and (min-width:30em){.image-grid li{width:33.333333%;}}@media only screen and (min-width:37.5em){html{font-size:95%;} .site-name{display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .top-navigation{display:inline;float:left;width:75%;margin-left:0%;margin-right:0%;} .image-wrap .headline-wrap,.image-wrap:after{left:25%;} .image-wrap .headline-wrap{margin-left:0;} #main article{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} #index{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} .footer-wrap footer{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;} .article-author-top{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .article-author-bottom{display:none;} .toc{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;position:fixed;top:120px;right:0;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);} .image-grid li{width:25%;} .related-articles{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;}}@media only screen and (min-width:48em){html{font-size:100%;} .image-grid li{width:20%;}}@media only screen and (min-width:62em){html{font-size:112.5%;} .image-grid li{width:16.666666666%;}}@media only screen and (min-width:86.375em){.site-name{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;} .top-navigation{display:inline;float:left;width:66.66666666666667%;} .image-wrap:after{left:33.333333333%;} .image-wrap .headline-wrap{margin-left:8.333333333333334%;} #main article{display:inline;float:left;width:37.5%;} #index{display:inline;float:left;width:37.5%;} .related-articles{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .footer-wrap footer{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .article-author-top{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;}}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){}
 
 /* ============================================================
-   ULTIMATE MINIMALIST & COMPACT TWO-COLUMN LAYOUT (v6)
+   ULTIMATE MINIMALIST - GITHUB REFINEMENT (v7)
    ============================================================ */
 
-/* 1. 标题字体优化：消除瘦长感，且【彻底移除加粗】 */
-h1, h2, h3, h4, h5, h6, 
-#main article h1, 
-.headline-wrap h1 {
+/* 1. 导航栏背景：换成 GitHub 经典的浅灰色 */
+.navigation-wrapper {
+    min-height: 60px !important;
+    background-color: #f6f8fa !important; /* GitHub Tab 栏背景色 */
+    border-bottom: 1px solid #d0d7de !important;
+    padding: 0.8rem 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.site-name, .top-navigation a {
+    color: #24292f !important;
+    font-weight: 500 !important;
+}
+
+/* 2. 标题字体：彻底去加宽，保持清爽 */
+h1, h2, h3, h4, h5, h6, #main article h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
-    font-weight: 400 !important; /* 彻底移除加粗，使用标准重量 */
+    font-weight: 400 !important; /* 移除加粗 */
+    color: #1b2128 !important;
     letter-spacing: 0px !important;
-    color: #1b2128 !important; /* 颜色略深于正文 */
-    text-rendering: optimizeLegibility;
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
 }
 
-/* 特别针对首页标题 */
-h1.entry-title {
-    font-weight: 400 !important;
-}
-
-/* 2. 强制主容器整体向左对齐，并加宽 */
+/* 3. 主容器布局调整：增加一点边距，不再死贴左侧 */
 #main {
     display: flex !important;
-    flex-direction: row !important; /* 水平排列 */
-    justify-content: flex-start !important; /* 靠左对齐 */
+    flex-direction: row !important;
+    justify-content: flex-start !important;
     align-items: flex-start !important;
-    flex-wrap: nowrap !important;
     
-    /* 核心修改：大幅减小左边距，让整体布局靠左 */
-    width: 98% !important; /* 占用屏幕 98% 宽度 */
-    max-width: 1600px !important; /* 增加最大宽度限制，给正文更多空间 */
-    margin-left: 1% !important; /* 仅留 1% 的左边距 */
+    width: 96% !important; 
+    max-width: 1500px !important;
+    margin-left: 2% !important; /* 从 1% 增加到 2%，给最左边一点呼吸空间 */
     margin-right: auto !important;
-    margin-top: 30px !important; /* 内容下移 */
+    margin-top: 40px !important;
 }
 
-/* 3. 定义【紧凑型】左侧边栏（头像与链接）及【左移的竖线】 */
+/* 4. 侧边栏微调：让头像和链接“往右一点” */
 .article-author-top, .sidebar {
-    /* 核心修改：减小侧边栏固定宽度，从 260px 缩至 220px */
-    flex: 0 0 220px !important; 
-    width: 220px !important;
+    flex: 0 0 250px !important; /* 宽度稍微调回 250px，方便内容居中显示 */
+    width: 250px !important;
     
-    /* 位置与内边距调整 */
-    margin-left: 0% !important;
-    margin-top: 0 !important;
-    padding-top: 2rem !important;
-    /* 核心修改：减小右内边距，让竖线离文字更近，从而使竖线整体左移 */
+    /* 核心修改：增加左边距，让内容靠右，位于最左侧边界和竖线之间 */
+    padding-left: 45px !important; 
     padding-right: 25px !important; 
-    text-align: left !important;
-
-    /* 关键竖线 */
+    padding-top: 2rem !important;
+    margin-left: 0 !important;
+    
+    /* 竖线位置不动 */
     border-right: 1px solid #d0d7de !important;
     box-sizing: border-box !important;
+    text-align: left !important;
 }
 
-/* 侧边栏内的链接巩固 */
-.article-author-top a, .sidebar a {
-    color: #24292f !important;
-    text-decoration: none !important;
-    font-weight: 500 !important; /* 链接可以稍微明显一点 */
-}
-.article-author-top a:hover, .sidebar a:hover {
-    color: #0969da !important;
-    text-decoration: underline !important;
-}
-
-/* 4. 定义右侧【更宽敞的】正文区域布局 */
+/* 5. 正文区域：保持宽敞 */
 #main article, .well, #index {
-    flex: 1 !important; /* 占用剩余所有空间 */
-    
-    /* 核心修改：减小左内边距，充分利用竖线左移腾出的空间 */
-    margin-top: 0 !important;
+    flex: 1 !important;
     margin-left: 0 !important;
-    padding-left: 40px !important; 
+    padding-left: 45px !important; /* 调整与竖线的间距 */
     padding-top: 2rem !important;
-    padding-right: 2rem !important; /* 增加右边距，防止文字贴边 */
+    padding-right: 5% !important;
 
-    /* 极简上下横线巩固 */
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
@@ -476,67 +461,35 @@ h1.entry-title {
     border-bottom: 1px solid #d0d7de !important;
     border-left: none !important;
     border-right: none !important;
-    
-    /* 容器加宽 */
-    width: 100% !important;
-    max-width: none !important;
 }
 
-/* 5. 巩固全局字体与链接颜色 */
-html, body {
-    background-color: #ffffff !important;
-    color: #24292f !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
-    line-height: 1.6 !important;
-}
-
-a, p > a, li > a {
-    color: #24292f !important;
+/* 6. 链接颜色策略 */
+a { color: #0969da !important; }
+p > a, li > a { 
+    color: #24292f !important; 
     text-decoration: none !important;
-    border-bottom: none !important;
 }
 a:hover, p > a:hover, li > a:hover {
     color: #0969da !important;
     text-decoration: underline !important;
 }
 
-/* 6. 导航栏与页脚极简色 */
-.navigation-wrapper {
-    min-height: 70px !important;
-    border-bottom: 1px solid #d0d7de !important;
-    padding-bottom: 10px !important;
-    margin-bottom: 0 !important;
-    background: #ffffff !important;
-}
-
+/* 7. 页脚清爽化 */
 .footer-wrap {
     background-color: #ffffff !important;
     border-top: 1px solid #d0d7de !important;
-    padding-top: 2rem !important;
+    margin-top: 50px !important;
 }
 
-/* 7. 响应式处理（手机端堆叠） */
+/* 8. 手机端适配 */
 @media (max-width: 768px) {
-    #main {
-        flex-direction: column !important;
-        width: 100% !important;
-        margin-left: 0 !important;
-        padding: 0 1rem !important;
-    }
-
-    .article-author-top, .sidebar {
-        width: 100% !important;
-        flex: none !important;
-        border-right: none !important; /* 移除竖线 */
-        border-bottom: 1px solid #d0d7de !important; /* 改为底线 */
-        padding-right: 0 !important;
-        padding-bottom: 2rem !important;
+    #main { flex-direction: column !important; margin-left: 0 !important; width: 100% !important; }
+    .article-author-top, .sidebar { 
+        width: 100% !important; 
+        padding: 2rem 1rem !important; 
+        border-right: none !important; 
+        border-bottom: 1px solid #d0d7de !important;
         text-align: center !important;
     }
-
-    #main article {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-top: 2rem !important;
-    }
+    #main article { padding: 2rem 1rem !important; }
 }
