@@ -457,3 +457,46 @@ hr {
     border-top: 1px solid #d0d7de !important;
     border-bottom: none !important;
 }
+/* --- 极简风格深度优化 --- */
+
+/* 1. 字体优化：换成干净的系统无衬线字体，去除华丽感 */
+html, body, h1, h2, h3, h4, h5, h6, .navigation-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* 2. 超链接优化：统一改为黑色，仅在鼠标悬停时显示下划线或灰色 */
+a, p > a, li > a {
+    color: #1b1f23 !important; /* 接近纯黑 */
+    text-decoration: none !important;
+    border-bottom: none !important; /* 移除原有的点状下划线 */
+}
+
+a:hover {
+    color: #57606a !important; /* 悬停变为深灰色 */
+    text-decoration: underline !important;
+}
+
+/* 3. 导航栏横线修正：
+   原主题的 .top-navigation-current 或伪元素可能导致线条错位。
+   我们重新定义导航栏的容器结构。 */
+.navigation-wrapper {
+    padding: 20px 0 !important;
+    border-bottom: 1px solid #d0d7de !important; /* 线条放在整个导航包装器的底部 */
+    margin-bottom: 2rem !important;
+}
+
+.top-navigation {
+    border-bottom: none !important; /* 移除可能存在的内部旧线条 */
+}
+
+.top-navigation-current {
+    text-decoration: none !important;
+    border-bottom: 2px solid #1b1f23 !important; /* 当前页面的底线加粗，紧贴文字 */
+    padding-bottom: 5px;
+}
+
+/* 4. 移除多余的装饰性边框 */
+#main article {
+    border: none !important; /* 如果觉得 article 的边框太死板可以去掉 */
+    padding-top: 0 !important;
+}
