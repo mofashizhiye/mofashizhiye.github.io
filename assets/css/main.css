@@ -459,62 +459,63 @@ hr {
 }
 
 /* ============================================================
-   FORCED MINIMALIST OVERRIDE (GitHub Style)
+   FORCED MINIMALIST OVERRIDE v3 (GitHub Style)
    ============================================================ */
 
-/* 1. 彻底解决字体问题：强制使用系统无衬线字体，消除圆滑华丽感 */
+/* 1. 全局字体强制清空：移除圆滑衬线 */
 html, body, div, p, a, li, h1, h2, h3, h4, h5, h6, span, section, article {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
 }
 
-/* 2. 彻底解决超链接蓝色：强制所有状态为黑色，取消所有下划线装饰 */
-a, 
-a:visited, 
-#main a, 
-#main p a, 
-#main li a,
-.archive__item-title a {
-    color: #24292f !important;
+/* 2. 彻底封杀超链接蓝色：覆盖所有层级路径 */
+a, a:visited, 
+#main a, #main p a, #main li a, 
+.archive__item-title a,
+.top-navigation a,
+.navigation-wrapper a {
+    color: #24292f !important; /* 强制纯黑/深灰 */
     text-decoration: none !important;
     border-bottom: none !important;
     box-shadow: none !important;
 }
 
-a:hover {
-    color: #0969da !important; /* 只有悬停时才变蓝 */
+/* 仅在悬停时出现 GitHub 蓝 */
+a:hover, #main a:hover {
+    color: #0969da !important;
     text-decoration: underline !important;
 }
 
-/* 3. 修正导航栏横线：移除顶部错位的横线，统一放在下方 */
-.navigation-wrapper {
-    border-bottom: 1px solid #d0d7de !important; /* 底部基准线 */
-    padding: 15px 0 !important;
-}
-
-/* 移除原主题可能在顶部的装饰线 */
-.top-navigation {
+/* 3. 导航栏横线：【先删除旧线条】 */
+.navigation-wrapper, 
+.top-navigation, 
+.top-navigation-current, 
+.top-navigation li, 
+.top-navigation a {
+    border: none !important;
     border-top: none !important;
-}
-
-/* 修正“当前页面”的横线位置：放在文字下方 */
-.top-navigation-current,
-.top-navigation .current,
-.top-navigation li.active a {
+    border-bottom: none !important;
     text-decoration: none !important;
-    border-top: none !important; /* 删掉出现在文字上方的线 */
-    border-bottom: 2px solid #24292f !important; /* 线条改在下方 */
-    padding-bottom: 4px;
 }
 
-/* 4. 移除正文容器不必要的边框和阴影，增加线条感 */
+/* 4. 导航栏横线：【再添加正确位置】 */
+/* 全局贯穿长线：放在导航区最底部 */
+.navigation-wrapper {
+    border-bottom: 1px solid #d0d7de !important; 
+    padding: 20px 0 10px 0 !important; /* 增加下边距给线条留位置 */
+    margin-bottom: 2rem !important;
+}
+
+/* 当前页面激活线：确保在文字下方，不穿过文字 */
+.top-navigation .top-navigation-current a,
+.top-navigation li.active a,
+.top-navigation-current a {
+    border-bottom: 2px solid #24292f !important;
+    padding-bottom: 8px !important; /* 调整此数值可上下移动这条线 */
+    display: inline-block !important; /* 必须是行内块，线条才能贴合文字宽度 */
+}
+
+/* 5. 移除多余容器装饰 */
 #main article, .well, #index {
     border: none !important;
     box-shadow: none !important;
-}
-
-hr {
-    height: 1px !important;
-    background-color: #d0d7de !important;
-    border: none !important;
-    margin: 2rem 0 !important;
 }
