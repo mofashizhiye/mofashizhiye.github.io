@@ -81,19 +81,33 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     padding: 0 !important;
 }
 
-/* 头像侧边栏：放在竖线左侧空间内 */
 .article-author-top, .sidebar {
-    flex: 0 0 235px !important; /* 固定宽度，配合背景线位置 */
+    flex: 0 0 235px !important; 
     width: 235px !important;
-    
-    /* 核心修改：内边距微调，让内容位于左边缘和竖线之间 */
-    padding: 1rem 200px 0 20px !important;
-    
-    /* 核心修改：移除原有的边框竖线，改用背景线实现贯穿 */
     border-right: none !important;
-    text-align: left !important;
-
+    padding: 1rem 0 0 0 !important; /* 清空所有混乱的 padding */
 }
+
+
+/* 精准定位头像、简介和链接 */
+.author-avatar, 
+.author-content, 
+.author-urls-wrapper {
+    margin-left: 60px !important; /* 调节这个数值！它是头像离网页最左边的距离 */
+    margin-right: auto !important;
+    text-align: left !important;
+}
+
+/* 强制头像图片不要居中 */
+.author-avatar img {
+    margin: 0 !important; 
+}
+
+
+
+
+
+
 
 /* 正文区域：占据剩余所有空间 */
 #main article, .well, #index {
