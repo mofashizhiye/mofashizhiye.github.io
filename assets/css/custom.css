@@ -30,6 +30,10 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 
 /* 3. 导航栏：极简灰色风格 (逐字节保持不变) */
 .navigation-wrapper {
+    /* GitHub 化的圆润、开阔字体栈 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
+    letter-spacing: 0.3px !important; /* 核心修正：加一点点字间距，让字体看起来更开阔 */
+    font-weight: 400 !important;
     min-height: 60px !important;
     background-color: #f6f8fa !important;
     border-bottom: 1px solid #d0d7de !important;
@@ -67,7 +71,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     flex: 0 0 235px !important; /* 255线位 - 20边距 = 235 */
     width: 235px !important;
     border: none !important;
-    padding: 1rem 0 0 0 !important;
+    padding: 0.7rem 0 0 0 !important;
     margin-left: 0 !important;
 }
 
@@ -80,17 +84,20 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
        改这个 60px：变大往右，变小往左。
        只要小于 235px，它就绝对会在竖线左侧。
        -------------------------------------------------- */
-    transform: translateX(60px) !important; 
+    transform: translateX(50px) !important; 
     text-align: left !important;
 }
 
 /* 注入 SOMITTY 名字 */
 .article-author-top::before {
     content: "SOMITTY" !important;
-    display: block !important;
+    display : block !important;
+    position: relative !important; /* 核心调节，用于单独上下移动 */
+    top: -10px !important; /* 单独把 Somitty 向上提了 10px */
     font-size: 1.5rem !important;
-    font-weight: 900 !important;
-    margin-bottom: 15px !important;
+    font-weight: normal !important; /* 核心修正：不加粗 */
+    color: #87ceeb !important; /* 核心修正：淡蓝色 */
+    margin-bottom: 10px !important; /* 名字和头像的间距缩小到 10px */
 }
 
 /* 头像显示与尺寸 */
