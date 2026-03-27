@@ -71,6 +71,12 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     margin-left: 0 !important;
 }
 
+/* 物理删除：隐藏头像 (.bio-photo) 和链接栏 (所有 p 标签) */
+.article-author-top .bio-photo,
+.article-author-top p {
+    display: none !important;
+}
+
 /* 5. 正文区域 */
 #main article, .well, #index {
     flex: 1 !important;
