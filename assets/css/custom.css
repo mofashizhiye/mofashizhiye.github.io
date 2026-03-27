@@ -1,5 +1,5 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - INFINITE VERTICAL LINE (v16)
+   ULTIMATE MINIMALIST - INFINITE VERTICAL LINE (v12)
    ============================================================ */
 
 /* 1. 彻底打破主题容器限制 */
@@ -10,26 +10,28 @@
     padding: 0 !important;
 }
 
-/* 2. 背景伪竖线实现：线条位置设为 270px */
+/* 2. 背景伪竖线实现：从导航栏底部贯穿到底部黑色 */
 body {
     position: relative !important;
     background-color: #ffffff !important;
+    /* 核心修改：在 body 背景上画线，实现“无限拉伸” */
+    /* 线条位于左侧 235px (20px body margin + 215px right padding) */
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
-    /* 线条固定在离最左侧 270px 的位置 */
-    background-position: 270px 0 !important; 
-    overflow-x: hidden !important;
+    background-position: 235px 0 !important; /* 线条位置不动，位于头像右侧 */
+    overflow-x: hidden !important; 
+    
 }
 
-/* 确保所有全局字体圆润且不加粗 */
+/* 确保所有全局字体彻底圆润且不加粗 */
 html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
     font-weight: 400 !important;
     color: #1b2128 !important;
 }
 
-/* 3. 导航栏【横向巩固】 */
+/* 3. 导航栏【横向巩固】：放大且圆润 */
 .navigation-wrapper {
     min-height: 60px !important;
     background-color: #f6f8fa !important;
@@ -37,61 +39,68 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     padding: 0 !important;
     margin-bottom: 0 !important;
 }
+
 .site-name { display: none !important; }
-.top-navigation { margin-left: 20px !important; }
+
+.top-navigation {
+    margin-left: 20px !important;
+}
+
 .top-navigation ul {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: row !important; /* 强制横向排列，防止变竖列 */
     flex-wrap: nowrap !important;
     list-style: none !important;
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .top-navigation li a {
     display: block !important;
     padding: 18px 20px !important;
     font-size: 16px !important;
     color: #24292f !important;
     border-bottom: 2px solid transparent;
+    transition: all 0.2s;
 }
-.top-navigation-current, .top-navigation li.active a {
+
+/* 橙红色激活下划线 */
+.top-navigation-current,
+.top-navigation li.active a {
     border-bottom: 2px solid #fd8c73 !important;
     font-weight: 600 !important;
 }
 
-/* 4. 两栏布局：【核心位置修正】 */
+/* 4. 两栏布局：【整体右移修正】 */
 #main {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
     width: 100% !important;
-    margin: 60px 0 0 0 !important; /* 顶部距离导航栏 60px */
+    margin: 60px 0 0 20px !important; /* 核心修改：margin-left: 20px让整体右移 */
     padding: 0 !important;
 }
 
-/* 头像侧边栏：精准放置在竖线左侧 270px 的空间里 */
+/* 头像侧边栏：放在竖线左侧空间内 */
 .article-author-top, .sidebar {
-    /* 侧边栏宽度设为 270px，与背景线对齐 */
-    flex: 0 0 270px !important; 
-    width: 270px !important;
+    flex: 0 0 215px !important; /* 固定宽度，配合背景线位置 */
+    width: 215px !important;
     
-    /* 核心修改：
-       padding-left: 50px 让头像远离网页最左边缘
-       padding-right: 30px 让头像离右侧竖线有呼吸感
-    */
-    padding: 1rem 30px 0 50px !important; 
+    /* 核心修改：内边距微调，让内容位于左边缘和竖线之间 */
+    padding: 1rem 30px 0 0 !important;
     
+    /* 核心修改：移除原有的边框竖线，改用背景线实现贯穿 */
     border-right: none !important;
     text-align: left !important;
-    box-sizing: border-box !important;
 }
 
-/* 正文区域：从竖线右侧开始 */
+/* 正文区域：占据剩余所有空间 */
 #main article, .well, #index {
     flex: 1 !important;
-    /* padding-left: 50px 确保正文文字离背景竖线有足够距离 */
-    padding: 1rem 5% 4rem 50px !important; 
+    /* 核心修改：左内边距 35px，确保文字离背景竖线有距离 */
+    padding: 1rem 5% 4rem 35px !important; 
 
+    /* 极简上下横线 Consolidation */
     border-top: 1px solid #d0d7de !important;
     border-bottom: 1px solid #d0d7de !important;
     border-left: none !important;
@@ -99,21 +108,27 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     border-radius: 0 !important;
 }
 
-/* 5. 黑色页脚：潜水艇 */
+/* 5. 页脚（黑色尾部）：极简优化 */
 .footer-wrap {
     background-color: #000000 !important;
-    padding: 4rem 0 !important;
-    margin-top: 0 !important;
+    color: #57606a !important; /* 灰字 */
+    padding: 3rem 0 2rem 0 !important;
 }
+
+/* 确保页脚文字也对齐（与正文或竖线） */
 .footer-wrap footer {
-    color: #57606a !important;
-    /* 对齐正文（270px 线条位置 + 50px 正文间隔） */
-    margin-left: 320px !important; 
+    margin-left: 270px !important; /* 放在竖线右侧对齐正文 */
     font-size: 14px !important;
 }
-.footer-wrap a, .footer-wrap .social-icons, .footer-wrap .cc-license { display: none !important; }
 
-/* 6. 辅助样式 */
+/* 彻底隐藏页脚内可能存在的旧链接和社交图标 */
+.footer-wrap .social-icons,
+.footer-wrap .cc-license,
+.footer-wrap a {
+    display: none !important;
+}
+
+/* 6. 辅助样式巩固 */
 a { color: #0969da !important; }
 p > a, li > a { color: #24292f !important; text-decoration: none !important; }
 a:hover { text-decoration: underline !important; }
