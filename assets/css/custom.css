@@ -89,18 +89,31 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 }
 
 
-/* 精准定位头像、简介和链接 */
-.author-avatar, 
-.author-content, 
-.author-urls-wrapper {
-    margin-left: 10px !important; /* 调节这个数值！它是头像离网页最左边的距离 */
-    margin-right: auto !important;
-    text-align: left !important;
+/* 4. 两栏布局：【侧边栏容器：不许动】 */
+.article-author-top, .sidebar {
+    flex: 0 0 235px !important; 
+    width: 235px !important;
+    border-right: none !important;
+    padding: 1rem 0 0 0 !important; 
 }
 
-/* 强制头像图片不要居中 */
-.author-avatar img {
+/* 核心修正：暴力锁定侧边栏内部所有元素（头像、简介、按钮） */
+/* 这里的 50px 是唯一的调节刻度：越大越靠右，越小越靠左 */
+.sidebar > div, 
+.sidebar > ul, 
+.author__avatar, 
+.author__content, 
+.author__urls-wrapper {
+    margin-left: 50px !important; 
+    margin-right: auto !important;
+    text-align: left !important;
+    display: block !important;
+}
+
+/* 针对图片的强制左对齐 */
+.author__avatar img, .author-avatar img {
     margin: 0 !important; 
+    max-width: 100px !important; /* 顺便限制一下头像大小，方便观察位置 */
 }
 
 
