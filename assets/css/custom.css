@@ -1,8 +1,8 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - V19 BASE WITH V21 FIX
+   ULTIMATE MINIMALIST - V19 BASE WITH AVATAR DELETED
    ============================================================ */
 
-/* 1. 基础容器：彻底铺满 */
+/* 1. 基础容器：彻底铺满 (保持 v19) */
 .wrapper, .inner, .initial-content, #main, .footer-wrap {
     max-width: none !important;
     width: 100% !important;
@@ -10,7 +10,7 @@
     padding: 0 !important;
 }
 
-/* 2. 背景竖线：固定在 255px 位置 */
+/* 2. 背景竖线：固定在 255px 位置 (保持 v19) */
 body {
     position: relative !important;
     background-color: #ffffff !important;
@@ -21,13 +21,13 @@ body {
     overflow-x: hidden !important; 
 }
 
-/* 全局字体 */
+/* 全局字体 (保持 v19) */
 html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
     font-weight: 400 !important;
 }
 
-/* 3. 导航栏 (保持 v19 风格) */
+/* 3. 导航栏 (保持 v19 风格) - 此处绝对不动一个像素 */
 .navigation-wrapper {
     min-height: 60px !important;
     background-color: #f6f8fa !important;
@@ -40,14 +40,14 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 .top-navigation li a { padding: 18px 20px !important; font-size: 16px !important; color: #24292f !important; }
 .top-navigation-current, .top-navigation li.active a { border-bottom: 2px solid #fd8c73 !important; }
 
-/* 4. 两栏布局：核心对齐 */
+/* 4. 两栏布局：核心对齐 (保持 v19) */
 #main {
     display: flex !important;
     flex-direction: row !important;
     margin: 60px 0 0 20px !important; 
 }
 
-/* --- 【侧边栏总控】 --- */
+/* --- 【侧边栏总控】 (保持 v19) --- */
 .article-author-top, .sidebar {
     flex: 0 0 235px !important; 
     width: 235px !important;
@@ -55,34 +55,22 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     padding: 1rem 0 0 0 !important;
 }
 
-/* --- 【侧边栏精确位移控制】 --- */
-/* 只要侧边栏内部元素带 author 字样，全部瞬移 */
-[class*="author__"], .sidebar__inner, .sidebar > div, .author-avatar {
+/* --- 【侧边栏重置】 --- */
+.sidebar__inner {
     display: block !important;
-    /* --------------------------------------------------
-       【核心调节按钮】
-       改这个 60px：变大往右，变小往左。
-       哪怕之前 800px 没反应，这次 60px 一定能动。
-       -------------------------------------------------- */
-    transform: translateX(60px) !important; 
+    /* 彻底消除你的测试 800px translateX */
+    transform: translateX(0px) !important; 
     text-align: left !important;
 }
 
-/* --- 【Somitty 名字注入】 --- */
-[class*="author__avatar"]::before, .author-avatar::before {
-    content: "SOMITTY" !important;
-    display: block !important;
-    font-size: 1.35rem !important;
-    font-weight: 900 !important;
-    margin-bottom: 12px !important;
-    letter-spacing: 1px !important;
+/* --- 【物理清除头像】 --- */
+/* 只要侧边栏内部元素带 author__ 字样（头像、简介、URLs），全部强制物理删除 */
+[class*="author__avatar"], [class*="author__content"], [class*="author__urls-wrapper"] {
+    display: none !important;
 }
 
-.author__avatar img, .author-avatar img {
-    margin: 0 !important;
-    max-width: 112px !important;
-    border-radius: 50% !important;
-}
+/* 针对图片的强制清除 */
+[class*="author__avatar"] img { display: none !important; }
 
 /* 5. 正文区域 (保持 v19 风格) */
 #main article, .well, #index {
@@ -97,6 +85,6 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 .footer-wrap footer { color: #57606a !important; margin-left: 290px !important; font-size: 14px !important; }
 .footer-wrap a, .footer-wrap .social-icons { display: none !important; }
 
-/* 7. 链接样式 */
+/* 7. 链接样式 (保持 v19) */
 a { color: #0969da !important; }
 p > a, li > a { color: #24292f !important; text-decoration: none !important; }
