@@ -19,9 +19,9 @@ body {
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
-    background-position: 235px 0 !important; /* 线条位置不动，位于头像右侧 */
+    background-position: 250px 0 !important; /* 线条位置不动，位于头像右侧 */
     overflow-x: hidden !important; 
-    
+
 }
 
 /* 确保所有全局字体彻底圆润且不加粗 */
@@ -83,15 +83,16 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 
 /* 头像侧边栏：放在竖线左侧空间内 */
 .article-author-top, .sidebar {
-    flex: 0 0 215px !important; /* 固定宽度，配合背景线位置 */
-    width: 215px !important;
+    flex: 0 0 230px !important; /* 固定宽度，配合背景线位置 */
+    width: 230px !important;
     
     /* 核心修改：内边距微调，让内容位于左边缘和竖线之间 */
-    padding: 1rem 30px 0 0 !important;
+    padding: 1rem 60px 0 20px 0 !important;
     
     /* 核心修改：移除原有的边框竖线，改用背景线实现贯穿 */
     border-right: none !important;
     text-align: left !important;
+
 }
 
 /* 正文区域：占据剩余所有空间 */
