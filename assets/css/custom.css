@@ -83,9 +83,11 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 
 /* 头像侧边栏：放在竖线左侧空间内 */
 .article-author-top, .sidebar {
-+     flex : 0 0 235px !important;  /* 宽度锁死在竖线左侧的 235px 空间内 */
-+     width : 235px !important;
-+     padding : 1rem 80px 0 20px !important; /* 核心：第二个值 80px 是右间距，数字越大头像越往左 */
+    flex: 0 0 235px !important; /* 固定宽度，配合背景线位置 */
+    width: 235px !important;
+    
+    /* 核心修改：内边距微调，让内容位于左边缘和竖线之间 */
+    padding: 1rem 80px 0 20px !important;
     
     /* 核心修改：移除原有的边框竖线，改用背景线实现贯穿 */
     border-right: none !important;
@@ -116,7 +118,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 
 /* 确保页脚文字也对齐（与正文或竖线） */
 .footer-wrap footer {
-    margin-left: 290px !important; /* 放在竖线右侧对齐正文 */
+    margin-left: 270px !important; /* 放在竖线右侧对齐正文 */
     font-size: 14px !important;
 }
 
