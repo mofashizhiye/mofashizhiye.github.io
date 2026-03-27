@@ -97,23 +97,39 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     padding: 1rem 0 0 0 !important; 
 }
 
-/* 核心修正：暴力锁定侧边栏内部所有元素（头像、简介、按钮） */
-/* 这里的 50px 是唯一的调节刻度：越大越靠右，越小越靠左 */
-.sidebar > div, 
-.sidebar > ul, 
-.author__avatar, 
-.author__content, 
-.author__urls-wrapper {
-    margin-left: 50px !important; 
-    margin-right: auto !important;
-    text-align: left !important;
-    display: block !important;
+/* 4. 两栏布局：【侧边栏容器：不许动】 */
+.article-author-top, .sidebar {
+    flex: 0 0 235px !important; 
+    width: 235px !important;
+    border-right: none !important;
+    padding: 1rem 0 0 0 !important; 
+    /* 确保容器本身不居中 */
+    margin-left: 0 !important;
 }
 
-/* 针对图片的强制左对齐 */
-.author__avatar img, .author-avatar img {
-    margin: 0 !important; 
-    max-width: 100px !important; /* 顺便限制一下头像大小，方便观察位置 */
+/* 核心修正：暴力强制侧边栏内所有内容向左死贴 */
+/* 我们把 margin-left 设为 0，让它直接贴着 #main 的 20px 边缘 */
+.sidebar,
+.sidebar__inner,
+.author__avatar,
+.author__content,
+.author__urls-wrapper,
+.sidebar > div,
+.sidebar > ul {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+    display: block !important;
+    transform: none !important; /* 防止有的主题带位移 */
+}
+
+/* 强制头像图片取消任何自动居中 */
+.author__avatar img, 
+.author-avatar img,
+.sidebar img {
+    margin: 0 !important;
+    margin-left: 0 !important;
+    display: block !important;
 }
 
 
