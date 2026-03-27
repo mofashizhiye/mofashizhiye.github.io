@@ -78,7 +78,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
        【方向盘】修改这个数字控制头像左右：
        增大（如 80px）往右移动；减小（如 30px）往左移动
        -------------------------------------------------- */
-    transform: translateX(55px) !important; 
+    transform: translateX(114px) !important; 
     text-align: left !important;
 }
 
