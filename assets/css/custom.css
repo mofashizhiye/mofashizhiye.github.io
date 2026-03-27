@@ -65,7 +65,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
        【方向盘 A：左右移动】
        修改 left 的数字：增大往右挪，减小往左挪。
        -------------------------------------------------- */
-    left: 55px !important; 
+    left: 20px !important; 
     text-align: left !important;
 }
 
