@@ -1,8 +1,8 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - INFINITE VERTICAL LINE (v12)
+   ULTIMATE MINIMALIST - CLEAN & POSITIONED (v19)
    ============================================================ */
 
-/* 1. 彻底打破主题容器限制 */
+/* 1. 基础容器：彻底铺满 */
 .wrapper, .inner, .initial-content, #main, .footer-wrap {
     max-width: none !important;
     width: 100% !important;
@@ -10,180 +10,114 @@
     padding: 0 !important;
 }
 
-/* 2. 背景伪竖线实现：从导航栏底部贯穿到底部黑色 */
+/* 2. 背景竖线：固定在 255px 位置 */
 body {
     position: relative !important;
     background-color: #ffffff !important;
-    /* 核心修改：在 body 背景上画线，实现“无限拉伸” */
-    /* 线条位于左侧 235px (20px body margin + 215px right padding) */
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
-    background-position: 255px 0 !important; /* 线条位置不动，位于头像右侧 */
-    overflow-x: hidden !important; 
-
+    background-position: 255px 0 !important; /* 线条精确位置 */
+    overflow-x: hidden !important; /* 彻底杀掉底部滚动条 */
 }
 
-/* 确保所有全局字体彻底圆润且不加粗 */
+/* 全局字体：圆润不加粗 */
 html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
     font-weight: 400 !important;
     color: #1b2128 !important;
 }
 
-/* 3. 导航栏【横向巩固】：放大且圆润 */
+/* 3. 导航栏：极简灰色风格 */
 .navigation-wrapper {
     min-height: 60px !important;
     background-color: #f6f8fa !important;
     border-bottom: 1px solid #d0d7de !important;
     padding: 0 !important;
-    margin-bottom: 0 !important;
 }
-
-.site-name { display: none !important; }
-
-.top-navigation {
-    margin-left: 20px !important;
-}
-
+.site-name { display: none !important; } /* 隐藏原有的 Somitty */
+.top-navigation { margin-left: 20px !important; }
 .top-navigation ul {
     display: flex !important;
-    flex-direction: row !important; /* 强制横向排列，防止变竖列 */
-    flex-wrap: nowrap !important;
+    flex-direction: row !important;
     list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
-
 .top-navigation li a {
     display: block !important;
     padding: 18px 20px !important;
     font-size: 16px !important;
     color: #24292f !important;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
 }
-
-/* 橙红色激活下划线 */
-.top-navigation-current,
-.top-navigation li.active a {
+.top-navigation-current, .top-navigation li.active a {
     border-bottom: 2px solid #fd8c73 !important;
     font-weight: 600 !important;
 }
 
-/* 4. 两栏布局：【整体右移修正】 */
+/* 4. 两栏布局：核心对齐逻辑 */
 #main {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
     width: 100% !important;
-    margin: 60px 0 0 20px !important; /* 核心修改：margin-left: 20px让整体右移 */
-    padding: 0 !important;
+    margin: 60px 0 0 20px !important; /* 整体右偏 20px */
 }
 
+/* --- 【唯一侧边栏定义】 --- */
 .article-author-top, .sidebar {
-    flex: 0 0 235px !important; 
+    flex: 0 0 235px !important; /* 255线位 - 20边距 = 235 */
     width: 235px !important;
-    border-right: none !important;
-    padding: 1rem 0 0 0 !important; /* 清空所有混乱的 padding */
-}
-
-
-/* 4. 两栏布局：【侧边栏容器：不许动】 */
-.article-author-top, .sidebar {
-    flex: 0 0 235px !important; 
-    width: 235px !important;
-    border-right: none !important;
-    padding: 1rem 0 0 0 !important; 
-}
-
-/* 4. 两栏布局：【侧边栏容器：不许动】 */
-.article-author-top, .sidebar {
-    flex: 0 0 235px !important; 
-    width: 235px !important;
-    border-right: none !important;
-    padding: 1rem 0 0 0 !important; 
-    /* 确保容器本身不居中 */
+    border: none !important;
+    padding: 1rem 0 0 0 !important;
     margin-left: 0 !important;
 }
 
-/* 核心修正：暴力强制侧边栏内所有内容向左死贴 */
-/* 我们把 margin-left 设为 0，让它直接贴着 #main 的 20px 边缘 */
-.sidebar,
-.sidebar__inner,
-.author__avatar,
-.author__content,
-.author__urls-wrapper {
-    /* --------------------------------------------------
-       【左右移动】控制台
-       -------------------------------------------------- */
-    /* 增加这个值：头像向【右】跑（靠近竖线）
-       减小这个值：头像向【左】跑（靠近屏幕边缘） */
-    margin-left: 1000px !important; 
-
-    /* --------------------------------------------------
-       【上下移动】控制台
-       -------------------------------------------------- */
-    /* 增加这个值：头像整体【下】移（远离导航栏）
-       减小这个值：头像整体【上】移（靠近导航栏） 
-       甚至可以用负值，比如 -20px 强行上拉 */
-    margin-top: 1000px !important; 
-
-    /* 基础配置，不要动 */
-    text-align: left !important;
+/* --- 【侧边栏位移控制台】 --- */
+.sidebar__inner, .author__avatar, .author__content, .author__urls-wrapper {
     display: block !important;
+    /* --------------------------------------------------
+       【方向盘】修改这个数字控制头像左右：
+       增大（如 80px）往右移动；减小（如 30px）往左移动
+       -------------------------------------------------- */
+    transform: translateX(55px) !important; 
+    text-align: left !important;
 }
 
-/* --------------------------------------------------
-   【头像尺寸】控制台
-   -------------------------------------------------- */
+/* --- 【Somitty 名字注入】 --- */
+.author__avatar::before {
+    content: "SOMITTY" !important;
+    display: block !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 15px !important;
+    letter-spacing: 1px !important;
+}
+
 .author__avatar img {
-    /* 改变这个值，头像就会变大或变小 */
-    max-width: 110px !important; 
-    margin-left: 0 !important;
+    margin: 0 !important;
+    max-width: 110px !important;
+    border-radius: 50% !important;
 }
 
-
-
-
-
-
-
-/* 正文区域：占据剩余所有空间 */
+/* 5. 正文区域 */
 #main article, .well, #index {
     flex: 1 !important;
-    /* 核心修改：左内边距 35px，确保文字离背景竖线有距离 */
     padding: 1rem 5% 4rem 35px !important; 
-
-    /* 极简上下横线 Consolidation */
     border-top: 1px solid #d0d7de !important;
     border-bottom: 1px solid #d0d7de !important;
-    border-left: none !important;
-    border-right: none !important;
-    border-radius: 0 !important;
 }
 
-/* 5. 页脚（黑色尾部）：极简优化 */
+/* 6. 黑色底部 */
 .footer-wrap {
     background-color: #000000 !important;
-    color: #57606a !important; /* 灰字 */
-    padding: 3rem 0 2rem 0 !important;
+    padding: 4rem 0 !important;
 }
-
-/* 确保页脚文字也对齐（与正文或竖线） */
 .footer-wrap footer {
-    margin-left: 270px !important; /* 放在竖线右侧对齐正文 */
+    color: #57606a !important;
+    margin-left: 290px !important; /* 对齐线后正文 */
     font-size: 14px !important;
 }
+.footer-wrap a, .footer-wrap .social-icons { display: none !important; }
 
-/* 彻底隐藏页脚内可能存在的旧链接和社交图标 */
-.footer-wrap .social-icons,
-.footer-wrap .cc-license,
-.footer-wrap a {
-    display: none !important;
-}
-
-/* 6. 辅助样式巩固 */
+/* 7. 链接样式 */
 a { color: #0969da !important; }
 p > a, li > a { color: #24292f !important; text-decoration: none !important; }
-a:hover { text-decoration: underline !important; }
