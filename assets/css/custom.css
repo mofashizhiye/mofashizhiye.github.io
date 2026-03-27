@@ -93,7 +93,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 .author-avatar, 
 .author-content, 
 .author-urls-wrapper {
-    margin-left: 60px !important; /* 调节这个数值！它是头像离网页最左边的距离 */
+    margin-left: 10px !important; /* 调节这个数值！它是头像离网页最左边的距离 */
     margin-right: auto !important;
     text-align: left !important;
 }
