@@ -1,53 +1,123 @@
 /* ============================================================
-   Surgical Fix - Navigation Restore & Avatar Delete (v22)
+   ULTIMATE MINIMALIST - CLEAN & POSITIONED (v19)
    ============================================================ */
 
-/* 1. 彻底修正导航栏位置 (解决 image_958c20 中的下移错位) */
-.navigation-wrapper {
-    min-height: 0 !important; /* 让它根据内部链接高度自适应 */
-    padding: 0 !important;
-    background-color: #f6f8fa !important;
-}
-.top-navigation ul {
+/* 1. 基础容器：彻底铺满 */
+.wrapper, .inner, .initial-content, #main, .footer-wrap {
+    max-width: none !important;
+    width: 100% !important;
     margin: 0 !important;
-    padding: 18px 0 !important; /* 用这个 padding 撑开高度，确保文字垂直居中 */
+    padding: 0 !important;
 }
 
-/* 2. 头像物理删除测试 (如果你还能看到头像，说明这几个类名在你的 HTML 里全不存在) */
-/* 我们直接用最原始的标签选择器：侧边栏里的图片、头像容器，统统消失 */
-.sidebar img, 
-.author__avatar, 
-.author-avatar, 
-[class*="avatar"],
-[class*="author"] img {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-/* 3. 侧边栏 & SOMITTY 置顶 */
-/* 如果头像删除了，我们在这里重新注入 SOMITTY */
-.sidebar {
-    transform: translateX(50px) !important; /* 调整这个数字控制 Somitty 的左右位置 */
-}
-.sidebar::before {
-    content: "SOMITTY" !important;
-    display: block !important;
-    font-size: 1.5rem !important;
-    font-weight: 900 !important;
-    margin-bottom: 20px !important;
-    color: #1b2128 !important;
-}
-
-/* --- 保持 body 竖线和黑色页脚逻辑不动 (v12 基础) --- */
+/* 2. 背景竖线：固定在 255px 位置 */
 body {
     position: relative !important;
+    background-color: #ffffff !important;
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
-    background-position: 255px 0 !important; 
-    overflow-x: hidden !important; 
+    background-position: 255px 0 !important; /* 线条精确位置 */
+    overflow-x: hidden !important; /* 彻底杀掉底部滚动条 */
 }
-#main { display: flex !important; margin: 60px 0 0 20px !important; }
-#main article { flex: 1 !important; padding: 1rem 5% 4rem 35px !important; border-top: 1px solid #d0d7de !important; border-bottom: 1px solid #d0d7de !important; }
-.footer-wrap { background-color: #000000 !important; padding: 4rem 0 !important; }
-.footer-wrap footer { color: #57606a !important; margin-left: 290px !important; font-size: 14px !important; }
+
+/* 全局字体：圆润不加粗 */
+html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-weight: 400 !important;
+    color: #1b2128 !important;
+}
+
+/* 3. 导航栏：极简灰色风格 */
+.navigation-wrapper {
+    min-height: 60px !important;
+    background-color: #f6f8fa !important;
+    border-bottom: 1px solid #d0d7de !important;
+    padding: 0 !important;
+}
+.site-name { display: none !important; } /* 隐藏原有的 Somitty */
+.top-navigation { margin-left: 20px !important; }
+.top-navigation ul {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none !important;
+}
+.top-navigation li a {
+    display: block !important;
+    padding: 18px 20px !important;
+    font-size: 16px !important;
+    color: #24292f !important;
+}
+.top-navigation-current, .top-navigation li.active a {
+    border-bottom: 2px solid #fd8c73 !important;
+    font-weight: 600 !important;
+}
+
+/* 4. 两栏布局：核心对齐逻辑 */
+#main {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 60px 0 0 20px !important; /* 整体右偏 20px */
+}
+
+/* --- 【唯一侧边栏定义】 --- */
+.article-author-top, .sidebar {
+    flex: 0 0 235px !important; /* 255线位 - 20边距 = 235 */
+    width: 235px !important;
+    border: none !important;
+    padding: 1rem 0 0 0 !important;
+    margin-left: 0 !important;
+}
+
+/* --- 【侧边栏位移控制台】 --- */
+.sidebar__inner, .author__avatar, .author__content, .author__urls-wrapper {
+    display: block !important;
+    /* --------------------------------------------------
+       【方向盘】修改这个数字控制头像左右：
+       增大（如 80px）往右移动；减小（如 30px）往左移动
+       -------------------------------------------------- */
+    transform: translateX(800px) !important; 
+    text-align: left !important;
+}
+
+/* --- 【Somitty 名字注入】 --- */
+.author__avatar::before {
+    content: "SOMITTY" !important;
+    display: block !important;
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 15px !important;
+    letter-spacing: 1px !important;
+}
+
+.author__avatar img {
+    margin: 0 !important;
+    max-width: 110px !important;
+    border-radius: 50% !important;
+}
+
+/* 5. 正文区域 */
+#main article, .well, #index {
+    flex: 1 !important;
+    padding: 1rem 5% 4rem 35px !important; 
+    border-top: 1px solid #d0d7de !important;
+    border-bottom: 1px solid #d0d7de !important;
+}
+
+/* 6. 黑色底部 */
+.footer-wrap {
+    background-color: #000000 !important;
+    padding: 4rem 0 !important;
+}
+.footer-wrap footer {
+    color: #57606a !important;
+    margin-left: 290px !important; /* 对齐线后正文 */
+    font-size: 14px !important;
+}
+.footer-wrap a, .footer-wrap .social-icons { display: none !important; }
+
+/* 7. 链接样式 */
+a { color: #0969da !important; }
+p > a, li > a { color: #24292f !important; text-decoration: none !important; }
