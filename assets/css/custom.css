@@ -119,7 +119,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
        -------------------------------------------------- */
     /* 增加这个值：头像向【右】跑（靠近竖线）
        减小这个值：头像向【左】跑（靠近屏幕边缘） */
-    margin-left: 100px !important; 
+    margin-left: 1000px !important; 
 
     /* --------------------------------------------------
        【上下移动】控制台
@@ -127,7 +127,7 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     /* 增加这个值：头像整体【下】移（远离导航栏）
        减小这个值：头像整体【上】移（靠近导航栏） 
        甚至可以用负值，比如 -20px 强行上拉 */
-    margin-top: 0px !important; 
+    margin-top: 1000px !important; 
 
     /* 基础配置，不要动 */
     text-align: left !important;
