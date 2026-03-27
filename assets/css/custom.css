@@ -1,90 +1,53 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - V19 BASE WITH AVATAR DELETED
+   Surgical Fix - Navigation Restore & Avatar Delete (v22)
    ============================================================ */
 
-/* 1. 基础容器：彻底铺满 (保持 v19) */
-.wrapper, .inner, .initial-content, #main, .footer-wrap {
-    max-width: none !important;
-    width: 100% !important;
-    margin: 0 !important;
+/* 1. 彻底修正导航栏位置 (解决 image_958c20 中的下移错位) */
+.navigation-wrapper {
+    min-height: 0 !important; /* 让它根据内部链接高度自适应 */
     padding: 0 !important;
+    background-color: #f6f8fa !important;
+}
+.top-navigation ul {
+    margin: 0 !important;
+    padding: 18px 0 !important; /* 用这个 padding 撑开高度，确保文字垂直居中 */
 }
 
-/* 2. 背景竖线：固定在 255px 位置 (保持 v19) */
+/* 2. 头像物理删除测试 (如果你还能看到头像，说明这几个类名在你的 HTML 里全不存在) */
+/* 我们直接用最原始的标签选择器：侧边栏里的图片、头像容器，统统消失 */
+.sidebar img, 
+.author__avatar, 
+.author-avatar, 
+[class*="avatar"],
+[class*="author"] img {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 3. 侧边栏 & SOMITTY 置顶 */
+/* 如果头像删除了，我们在这里重新注入 SOMITTY */
+.sidebar {
+    transform: translateX(50px) !important; /* 调整这个数字控制 Somitty 的左右位置 */
+}
+.sidebar::before {
+    content: "SOMITTY" !important;
+    display: block !important;
+    font-size: 1.5rem !important;
+    font-weight: 900 !important;
+    margin-bottom: 20px !important;
+    color: #1b2128 !important;
+}
+
+/* --- 保持 body 竖线和黑色页脚逻辑不动 (v12 基础) --- */
 body {
     position: relative !important;
-    background-color: #ffffff !important;
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
     background-position: 255px 0 !important; 
     overflow-x: hidden !important; 
 }
-
-/* 全局字体 (保持 v19) */
-html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
-    font-weight: 400 !important;
-}
-
-/* 3. 导航栏 (保持 v19 风格) - 此处绝对不动一个像素 */
-.navigation-wrapper {
-    min-height: 60px !important;
-    background-color: #f6f8fa !important;
-    border-bottom: 1px solid #d0d7de !important;
-    padding: 0 !important;
-}
-.site-name { display: none !important; } 
-.top-navigation { margin-left: 20px !important; }
-.top-navigation ul { display: flex !important; flex-direction: row !important; list-style: none !important; }
-.top-navigation li a { padding: 18px 20px !important; font-size: 16px !important; color: #24292f !important; }
-.top-navigation-current, .top-navigation li.active a { border-bottom: 2px solid #fd8c73 !important; }
-
-/* 4. 两栏布局：核心对齐 (保持 v19) */
-#main {
-    display: flex !important;
-    flex-direction: row !important;
-    margin: 60px 0 0 20px !important; 
-}
-
-/* --- 【侧边栏总控】 (保持 v19) --- */
-.article-author-top, .sidebar {
-    flex: 0 0 235px !important; 
-    width: 235px !important;
-    border: none !important;
-    padding: 1rem 0 0 0 !important;
-}
-
-/* --- 【侧边栏重置】 --- */
-.sidebar__inner {
-    display: block !important;
-    /* 彻底消除你的测试 800px translateX */
-    transform: translateX(0px) !important; 
-    text-align: left !important;
-}
-
-/* --- 【物理清除头像】 --- */
-/* 只要侧边栏内部元素带 author__ 字样（头像、简介、URLs），全部强制物理删除 */
-[class*="author__avatar"], [class*="author__content"], [class*="author__urls-wrapper"] {
-    display: none !important;
-}
-
-/* 针对图片的强制清除 */
-[class*="author__avatar"] img { display: none !important; }
-
-/* 5. 正文区域 (保持 v19 风格) */
-#main article, .well, #index {
-    flex: 1 !important;
-    padding: 1rem 5% 4rem 35px !important; 
-    border-top: 1px solid #d0d7de !important;
-    border-bottom: 1px solid #d0d7de !important;
-}
-
-/* 6. 黑色页脚 (保持 v19 风格) */
+#main { display: flex !important; margin: 60px 0 0 20px !important; }
+#main article { flex: 1 !important; padding: 1rem 5% 4rem 35px !important; border-top: 1px solid #d0d7de !important; border-bottom: 1px solid #d0d7de !important; }
 .footer-wrap { background-color: #000000 !important; padding: 4rem 0 !important; }
 .footer-wrap footer { color: #57606a !important; margin-left: 290px !important; font-size: 14px !important; }
-.footer-wrap a, .footer-wrap .social-icons { display: none !important; }
-
-/* 7. 链接样式 (保持 v19) */
-a { color: #0969da !important; }
-p > a, li > a { color: #24292f !important; text-decoration: none !important; }
