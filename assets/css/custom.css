@@ -1,5 +1,5 @@
 /* ============================================================
-   ULTIMATE MINIMALIST - GITHUB NAV FIX (v23)
+   ULTIMATE MINIMALIST - CLEAN & POSITIONED (v19-Fixed)
    ============================================================ */
 
 /* 1. 基础容器：彻底铺满 */
@@ -17,85 +17,70 @@ body {
     background-image: linear-gradient(#d0d7de, #d0d7de) !important;
     background-size: 1px 100% !important;
     background-repeat: no-repeat !important;
-    background-position: 255px 0 !important; 
-    overflow-x: hidden !important; 
+    background-position: 255px 0 !important; /* 线条精确位置 */
+    overflow-x: hidden !important; /* 彻底杀掉底部滚动条 */
 }
 
-/* 全局字体 */
+/* 全局字体：圆润不加粗 */
 html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
     font-weight: 400 !important;
+    color: #1b2128 !important;
 }
 
-/* 3. 导航栏：GitHub 仓库选项卡风格修复 */
+/* 3. 导航栏：极简灰色风格 (逐字节保持不变) */
 .navigation-wrapper {
-    display: flex !important;
-    align-items: center !important;
-    height: 60px !important;
+    min-height: 60px !important;
     background-color: #f6f8fa !important;
     border-bottom: 1px solid #d0d7de !important;
     padding: 0 !important;
 }
-.site-name { display: none !important; } 
-.top-navigation { 
-    margin-left: 20px !important; 
-    height: 100% !important;
-}
+.site-name { display: none !important; } /* 隐藏原有的 Somitty */
+.top-navigation { margin-left: 20px !important; }
 .top-navigation ul {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
-    height: 100% !important;
     list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-.top-navigation li {
-    height: 100% !important;
-    margin: 0 !important;
 }
 .top-navigation li a {
-    display: flex !important;
-    align-items: center !important;
-    height: 60px !important;
-    padding: 0 16px !important;
-    font-size: 14px !important;
+    display: block !important;
+    padding: 18px 20px !important;
+    font-size: 16px !important;
     color: #24292f !important;
-    text-decoration: none !important;
-    border-bottom: 2px solid transparent !important;
-    box-sizing: border-box !important;
 }
-/* 激活状态和悬停状态 */
-.top-navigation-current a, 
-.top-navigation li.active a,
-.top-navigation li a:hover {
+.top-navigation-current, .top-navigation li.active a {
     border-bottom: 2px solid #fd8c73 !important;
     font-weight: 600 !important;
 }
 
-/* 4. 两栏布局 */
+/* 4. 两栏布局：核心对齐逻辑 */
 #main {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
     width: 100% !important;
-    margin: 60px 0 0 20px !important; 
+    margin: 60px 0 0 20px !important; /* 整体右偏 20px */
 }
 
-/* --- 【侧边栏总控】 --- */
+/* --- 【唯一侧边栏定义】 --- */
 .article-author-top, .sidebar {
-    flex: 0 0 235px !important; 
+    flex: 0 0 235px !important; /* 255线位 - 20边距 = 235 */
     width: 235px !important;
     border: none !important;
     padding: 1rem 0 0 0 !important;
+    margin-left: 0 !important;
 }
 
 /* --- 【侧边栏位移与名字控制台】 --- */
 .article-author-top {
     display: block !important;
     position: relative !important;
-    /* 核心调节：55px 左右控制 */
-    left: -55px !important; 
+    /* --------------------------------------------------
+       【核心调节按钮】
+       改这个 60px：变大往右，变小往左。
+       只要小于 235px，它就绝对会在竖线左侧。
+       -------------------------------------------------- */
+    transform: translateX(60px) !important; 
     text-align: left !important;
 }
 
@@ -120,7 +105,6 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 .article-author-top p {
     display: block !important;
     margin-top: 10px !important;
-    font-size: 14px !important;
 }
 
 /* 5. 正文区域 */
@@ -132,8 +116,15 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
 }
 
 /* 6. 黑色底部 */
-.footer-wrap { background-color: #000000 !important; padding: 4rem 0 !important; }
-.footer-wrap footer { color: #57606a !important; margin-left: 290px !important; font-size: 14px !important; }
+.footer-wrap {
+    background-color: #000000 !important;
+    padding: 4rem 0 !important;
+}
+.footer-wrap footer {
+    color: #57606a !important;
+    margin-left: 290px !important; /* 对齐线后正文 */
+    font-size: 14px !important;
+}
 .footer-wrap a, .footer-wrap .social-icons { display: none !important; }
 
 /* 7. 链接样式 */
