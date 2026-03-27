@@ -71,33 +71,6 @@ html, body, h1, h2, h3, h4, h5, h6, #main article h1 {
     margin-left: 0 !important;
 }
 
-/* --- 【侧边栏位移控制台】 --- */
-.sidebar__inner, .author__avatar, .author__content, .author__urls-wrapper {
-    display: block !important;
-    /* --------------------------------------------------
-       【方向盘】修改这个数字控制头像左右：
-       增大（如 80px）往右移动；减小（如 30px）往左移动
-       -------------------------------------------------- */
-    transform: translateX(800px) !important; 
-    text-align: left !important;
-}
-
-/* --- 【Somitty 名字注入】 --- */
-.author__avatar::before {
-    content: "SOMITTY" !important;
-    display: block !important;
-    font-size: 1.3rem !important;
-    font-weight: 800 !important;
-    margin-bottom: 15px !important;
-    letter-spacing: 1px !important;
-}
-
-.author__avatar img {
-    margin: 0 !important;
-    max-width: 110px !important;
-    border-radius: 50% !important;
-}
-
 /* 5. 正文区域 */
 #main article, .well, #index {
     flex: 1 !important;
