@@ -3,7 +3,8 @@ layout: page
 permalink: /blogs/Revolution spectral CT.md
 title: 双能ct论文Revolution spectral CT for urinary stone with a single/mixed composition in vivo: a large sample analysis
 ---
->有意思的是，这篇论文并没有涉及到任何人工智能相关的内容。谨以此文记录对光子ct的认识和总结某个idea失败的原因。
+>有意思的是，这篇论文并没有涉及到任何人工智能相关的内容。
+>谨以此文记录对光子ct的认识和总结某个idea失败的原因。
 
 
 ### 写在最前面
