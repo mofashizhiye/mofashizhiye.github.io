@@ -6,7 +6,7 @@ title: 双能ct论文Revolution spectral CT for urinary stone with a single/m
 >有意思的是，这篇论文并没有涉及到任何人工智能相关的内容。
 >谨以此文记录对光子ct的认识和总结某个idea失败的原因。
 
-
+<br>
 ### 写在最前面
 
 总体而言，忙了几天，可能没什么成果，但也算有收获。
@@ -22,6 +22,7 @@ title: 双能ct论文Revolution spectral CT for urinary stone with a single/m
 - 药物类：尿酸结石通常可以通过碱化尿液来溶解 。
 - 辅助治疗：磷酸铵镁（感染性结石）在手术前往往需要抗生素治疗
 <br>
+
 #### 方法
 选取202例尿路结石患者，于体外进行ct扫描。取结石手术后，将取出的结石进行红外光谱分析，得出其精准成分。并且，鉴于仪器测量精度，小于 3 mm 的小结石被排除出样本。在ct扫描后，出了正常的ct成像，还能得到Zeff直方图。
 <br>
